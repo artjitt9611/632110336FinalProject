@@ -2,31 +2,19 @@ var searchByNameClick = document.getElementById('searchByName')
 var output = document.getElementById('outputForsearch')
 var output2 = document.getElementById('outputForMyfavorite')
 var id = 632110336
-var myfavorite = document.getElementById('outputForMyfavorite')
-var mySearch = document.getElementById('outputForsearch')
+var myFavorite = document.getElementById('MyMovie')
+var mySearch = document.getElementById('SearchBox')
 
 
-document.getElementById('1').addEventListener('click', ()=>{
-    HideAll()
-    myfavorite.style.display = 'block'
-    ShowMyList()
+document.getElementById('1').addEventListener('click',() => {
+    myFavorite.style.display = 'block'
+mySearch.style.display = 'none'
+ShowMyList()
 })
 
 
-function OnLoad(){
-
-    HideAll()
-
-}
-
-function HideAll(){
-    mySearch.style.display = 'none'
-    myfavorite.style.display = 'none'
-
-
-}
 function addMovieList(MovieList){
-    document.getElementById('outputForsearch').innerHTML = ' '
+    document.getElementById('outputForsearch').innerHTML = ''
     for(movie of MovieList){
         AddToTable(movie)
 
@@ -46,6 +34,7 @@ function ShowMyList(MovieList){
 
    
 function addMovieMyList(MovieList){
+    document.getElementById('outputForMyfavorite').innerHTML = ''
     for(movie of MovieList){
        AddToTableMyList(movie)
 
@@ -53,6 +42,8 @@ function addMovieMyList(MovieList){
 }
 
 searchByNameClick.addEventListener('click',()=>{
+    mySearch.style.display = 'block'
+    myFavorite.style.display = 'none'
     let name = document.getElementById('InputNameMovie').value
     console.log(name)
         fetch(`https://api.jikan.moe/v3/search/anime?q=${name}`)
