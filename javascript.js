@@ -4,13 +4,21 @@ var output2 = document.getElementById('outputForMyfavorite')
 var id = 632110336
 var myFavorite = document.getElementById('MyMovie')
 var mySearch = document.getElementById('SearchBox')
+var DetailMovie = document.getElementById('DetailMovie')
 
+
+document.getElementById('2').addEventListener('click',() => {
+    myFavorite.style.display = 'none'
+    mySearch.style.display = 'none'
+    DetailMovie.style.display = 'none'
+})
 
 document.getElementById('1').addEventListener('click',() => {
     myFavorite.style.display = 'block'
 mySearch.style.display = 'none'
 ShowMyList()
 })
+
 
 
 function addMovieList(MovieList){
@@ -143,13 +151,25 @@ function AddToTableMyList(movies){
     CardBody.classList.add('card-body')
     let CardName = document.createElement('h5')
     CardName.classList.add('card-title')
-    CardName.innerHTML = `${movies.title} ${movies.mal_id}`
+    CardName.innerHTML = `${movies.title} ${movies.id}`
     let button = document.createElement('button')
     button.setAttribute('type','button')
-    button.setAttribute('id','addmovie')
+    button.setAttribute('id','DetailMovie')
     button.innerText = 'Detail'
     button.classList.add('btn')
     button.classList.add('btn-success')
+    button.addEventListener('click', function(){
+        let id = movies.id
+        console.log(id)
+            fetch(`https://se104-project-backend.du.r.appspot.com/movie/632110336/${id}`)
+            .then(response => {
+                return response.json()
+            }).then(movie =>{
+                addMovieDetail(movie)
+                myFavorite.style.display = 'none'
+                
+            })
+    })
 
     let buttondelete = document.createElement('button')
     buttondelete.setAttribute('type','button')
@@ -170,3 +190,26 @@ function AddToTableMyList(movies){
 
 
 }
+
+
+
+    
+    function addMovieDetail(movie){
+        let image = document.getElementById('image')
+        image.setAttribute('src',movie.image_url)
+        let title = document.getElementById('title')
+        title.innerText = movie.title
+        let sysnopis = document.getElementById('sysnopis')
+        sysnopis.innerText = movie.synopsis
+        let Type = document.getElementById('Type')
+        Type.innerText = movie.type
+        let EP = document.getElementById('EP')
+        EP.innerText = movie.episodes
+        let Rate = document.getElementById('Rate')
+        Rate.innerText = movie.rated
+
+        
+      
+    
+    }
+    
