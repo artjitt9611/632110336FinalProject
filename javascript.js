@@ -178,7 +178,17 @@ function AddToTableMyList(movies){
     buttondelete.classList.add('btn')
     buttondelete.classList.add('btn-danger')
     buttondelete.classList.add('mx-5')
+    buttondelete.addEventListener('click',function(){
+        let con = confirm(`ท่านต้องการลบ  ${movies.title} จริงๆหรือไม่`)
+        if(con == true){
+            DeleteMovie(movies.id)
+        }else{
 
+        }
+       
+    })
+
+    
 
     cardfeild.appendChild(img)
     cardfeild.appendChild(CardBody)
@@ -192,6 +202,24 @@ function AddToTableMyList(movies){
 }
 
 
+function DeleteMovie(id){
+    fetch(`https://se104-project-backend.du.r.appspot.com/movie?id=632110336&&movieId=${id}`,{
+        method: 'DELETE'
+    }).then((response) => {
+        if(response.status === 200){
+            return response.json()
+        }else{
+            throw Error(response.statusText)
+        }
+    }).then(data => {
+        alert(`Movie name ${data.title} is delete now`)
+        ShowMyList()
+    
+    }).catch( () => {
+        alert('erorr ไอ้ควาย')
+
+    })
+}
 
     
     function addMovieDetail(movie){
