@@ -9,16 +9,25 @@ var DetailMovie = document.getElementById('DetailMovie')
 var DetailBox = document.getElementById('DetailBox')
 var tab = document.getElementById('tab')
 var banner = document.getElementById('mylistBanner')
+var about = document.getElementById('aboutbox')
 
 function Onload() {
     DetailBox.style.display = 'none'
     myFavorite.style.display = 'none'
     mySearch.style.display = 'none'
     banner.style.display = 'none'
+    about.style.display = 'none'
   
   
   
    
+}
+
+function HidAll(){
+    DetailBox.style.display = 'none'
+    myFavorite.style.display = 'none'
+    mySearch.style.display = 'none'
+    banner.style.display = 'none'
 }
 
 
@@ -28,6 +37,18 @@ document.getElementById('2').addEventListener('click', () => {
     tab.style.display ='block'
     B.style.display = 'block'
     banner.style.display = 'none'
+    about.style.display = 'none'
+    
+})
+
+
+document.getElementById('about').addEventListener('click', () => {
+    myFavorite.style.display = 'none'
+    mySearch.style.display = 'none'
+    tab.style.display ='none'
+    B.style.display = 'none'
+    banner.style.display = 'none'
+    about.style.display = 'block'
 })
 
 document.getElementById('1').addEventListener('click', () => {
@@ -38,7 +59,7 @@ document.getElementById('1').addEventListener('click', () => {
     mySearch.style.display = 'none'
     DetailBox.style.display = 'none'
     tab.style.display ='none'
-
+    about.style.display = 'none'
 })
 
 
@@ -76,6 +97,8 @@ searchByNameClick.addEventListener('click', () => {
     myFavorite.style.display = 'none'
     tab.style.display ='block'
     B.style.display = 'block'
+    banner.style.display = 'none'
+    about.style.display = 'none'
     let name = document.getElementById('InputNameMovie').value
     console.log(name)
     fetch(`https://api.jikan.moe/v3/search/anime?q=${name}`)
@@ -139,7 +162,7 @@ function AddToTable(movie) {
     button.innerText = 'ADD'
     button.classList.add('btn')
     button.classList.add('btn-success')
-    button.addEventListener('click', function () {
+    button.addEventListener('dblclick', function () {
 
         let con = confirm(`ท่านต้องการเพิ่ม  ${movie.title} ไปในรายการหนังที่ชื่นชอบหรือไม่ `)
         if (con == true) {
@@ -179,6 +202,7 @@ function AddToTableMyList(movies) {
     let cardfeild = document.createElement('div')
     cardfeild.setAttribute("style", "width: 20rem;")
     cardfeild.classList.add('card')
+    cardfeild.classList.add('text-center')
     col.appendChild(cardfeild)
     let img = document.createElement('img')
     img.setAttribute('src', movies.image_url)
@@ -194,7 +218,8 @@ function AddToTableMyList(movies) {
     button.setAttribute('id', 'DetailMovie')
     button.innerText = 'Detail'
     button.classList.add('btn')
-    button.classList.add('btn-success')
+    button.classList.add('mx-1')
+    button.classList.add('btn-outline-primary')
     button.addEventListener('click', function () {
         let id = movies.id
         console.log(id)
@@ -207,6 +232,7 @@ function AddToTableMyList(movies) {
                 DetailBox.style.display = 'block'
                 tab.style.display ='none'
                 B.style.display = 'none'
+                 about.style.display = 'none'
 
 
             })
@@ -217,8 +243,8 @@ function AddToTableMyList(movies) {
     buttondelete.setAttribute('id', 'Delete')
     buttondelete.innerText = 'Delete'
     buttondelete.classList.add('btn')
-    buttondelete.classList.add('btn-danger')
-    buttondelete.classList.add('mx-5')
+    buttondelete.classList.add('btn-outline-danger')
+    buttondelete.classList.add('mx-1')
     buttondelete.addEventListener('click', function () {
         let con = confirm(`ท่านต้องการลบ  ${movies.title} จริงๆหรือไม่`)
         if (con == true) {
