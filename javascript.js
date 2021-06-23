@@ -32,6 +32,7 @@ function HidAll(){
 
 
 document.getElementById('2').addEventListener('click', () => {
+    myFavorite.style.display = 'block'
     myFavorite.style.display = 'none'
     mySearch.style.display = 'none'
     tab.style.display ='block'
@@ -49,6 +50,7 @@ document.getElementById('about').addEventListener('click', () => {
     B.style.display = 'none'
     banner.style.display = 'none'
     about.style.display = 'block'
+    DetailBox.style.display = 'none'
 })
 
 document.getElementById('1').addEventListener('click', () => {
@@ -126,6 +128,7 @@ function addMovieToMyDB(movie) {
             throw Error(response.statusText)
         }
     }).then(data => {
+        alert(`ทำรายการสำเร็จ `)
         console.log(data)
         ShowMyList(data)
     })
@@ -159,12 +162,12 @@ function AddToTable(movie) {
     let button = document.createElement('button')
     button.setAttribute('type', 'button')
     button.setAttribute('id', 'addmovie')
-    button.innerText = 'ADD'
+    button.innerText = 'Add to My FavoriteList'
     button.classList.add('btn')
     button.classList.add('btn-success')
     button.addEventListener('dblclick', function () {
 
-        let con = confirm(`ท่านต้องการเพิ่ม  ${movie.title} ไปในรายการหนังที่ชื่นชอบหรือไม่ `)
+        let con = confirm(`ท่านต้องการเพิ่ม  ${movie.title} ไปในรายการอนิเมะที่ชื่นชอบหรือไม่ `)
         if (con == true) {
 
             console.log(id, movie)
@@ -198,14 +201,15 @@ function AddToTable(movie) {
 
 function AddToTableMyList(movies) {
     let col = document.createElement('div')
-    col.setAttribute("class", "col")
+    col.setAttribute("class", "col ")
     let cardfeild = document.createElement('div')
-    cardfeild.setAttribute("style", "width: 20rem;")
+    cardfeild.setAttribute("style", "width: 19rem;")
     cardfeild.classList.add('card')
     cardfeild.classList.add('text-center')
     col.appendChild(cardfeild)
     let img = document.createElement('img')
     img.setAttribute('src', movies.image_url)
+    img.setAttribute('height',"400px")
     img.setAttribute('alt', 'Card image cap')
     img.classList.add('card-img-top')
     let CardBody = document.createElement('div')
@@ -246,7 +250,7 @@ function AddToTableMyList(movies) {
     buttondelete.classList.add('btn-outline-danger')
     buttondelete.classList.add('mx-1')
     buttondelete.addEventListener('click', function () {
-        let con = confirm(`ท่านต้องการลบ  ${movies.title} จริงๆหรือไม่`)
+        let con = confirm(`ท่านต้องการลบ  ${movies.title} ออกจากรายการอนิเมะที่ชื่นชอบ หรือไม่`)
         if (con == true) {
             DeleteMovie(movies.id)
         } else {
@@ -279,7 +283,7 @@ function DeleteMovie(id) {
             throw Error(response.statusText)
         }
     }).then(data => {
-        alert(`Movie name ${data.title} is delete now`)
+        alert(`${data.title} is delete now`)
         ShowMyList()
 
     }).catch(() => {
@@ -300,6 +304,8 @@ function addMovieDetail(movie) {
     Type.innerText = movie.type
     let EP = document.getElementById('EP')
     EP.innerText = movie.episodes
+    let ss = document.getElementById('Score')
+    ss.innerText = movie.score
     let Rate = document.getElementById('Rate')
     Rate.innerText = movie.rated
 

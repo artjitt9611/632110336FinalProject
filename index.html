@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>MyAnimeList</title>
 </head>
 
 <body onload="Onload()">
-    <nav class="navbar navbar-dark bg-secondary text-white" aria-label="First navbar example">
+    <nav class="navbar navbar-dark bg-dark text-white" aria-label="First navbar example">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">MyAnimeList.net</a>
+            <a class="navbar-brand" href="#">MyAnimeList.jp</a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -32,11 +32,11 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
                     </li>
                 </ul>
-              
+
             </div>
         </div>
     </nav>
-    <header class="p-3 bg-dark text-white">
+    <header class="p-3 bg-secondary text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -47,7 +47,7 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link mx-2 text-white" id="2">Home</a></li>
-                    <li><a href="#" class="nav-link mx-2 text-white" id="1">MyMovie</a></li>
+                    <li><a href="#" class="nav-link mx-2 text-white" id="1">MyFavoriteList</a></li>
                     <li><a href="#" class="nav-link mx-2 text-white">FAQs</a></li>
                     <li><a href="#" class="nav-link mx-2 text-white" id="about">About</a></li>
                 </ul>
@@ -58,7 +58,16 @@
                 </form>
 
                 <div class="text-end">
-                    <button type="button" class="btn btn-warning" id="searchByName">search</button>
+                    <button type="button" class="btn btn-warning"id="searchByName" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                            </path>
+                        </svg>
+                        Search
+                    </button>
+                   
                 </div>
             </div>
         </div>
@@ -73,13 +82,16 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="image/01.jpg" alt="First slide">
+                <a href="http://grimgar.com/" target="_blank"><img class="d-block w-100" src="image/05.jpg" alt="First slide"></a>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="image/01.jpg" alt="Second slide">
+                <a href="https://www.phoenixnext.com/" target="_blank"><img class="d-block w-100" src="image/10.jpg" alt="Third slide"></a>
+           </div>
+            <div class="carousel-item">
+                <a href="https://yurucamp.jp/" target="_blank"><img class="d-block w-100" src="image/07.jpg" alt="Second slide"></a>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="image/01.jpg" alt="Third slide">
+                 <a href="https://www.phoenixnext.com/mgm0057-02p.html" target="_blank"><img class="d-block w-100" src="image/BG2.jpg" alt="Third slide"></a>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -94,11 +106,11 @@
 
 
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-light bg-dark" id="tab">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-light bg-dark" id="tab" >
         <h1 class="display-4">Welcome to MyAnimeList</h1>
 
     </div>
-    <div class="album py-5 bg-light" id="SearchBox">
+    <div class="album py-5 bg-light" id="SearchBox" style="background-image: url('image/bg.jpg');">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="outputForsearch">
 
@@ -118,8 +130,8 @@
     </div>
     <div id="MyMovie">
         <div class=" bg-dark ">
-            <div class="album py-5 bg-light">
-                <div class="container">
+            <div class="album py-5 bg-light"style="background-image: url('image/bg.jpg');" >
+                <div class="container" >
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="outputForMyfavorite">
 
 
@@ -135,9 +147,9 @@
     </div>
 
 
-    <div id="DetailBox">
-        <div class="col-md-auto mx-2 my-3 ">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative">
+    <div id="DetailBox" >
+        <div class="col-md-auto mx-2 my-3" >
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative" >
 
                 <div class="col-auto d-none d-lg-block">
                     <img class="" style="width: 300px" alt="Responsive image" id="image">
@@ -152,6 +164,7 @@
                     <h6 class="mt-3" style="font-size: 1.5rem">Infomation</h6>
                     <p class="card-text mb-1" style="font-size: 1.5rem"><b>Type : </b> <span id="Type"> </span></p>
                     <p class="card-text mb-1" style="font-size: 1.5rem"><b>Episodes : </b> <span id="EP"> </span></p>
+                    <p class="card-text mb-1" style="font-size: 1.5rem"><b>Score : </b> <span id="Score"> </span></p>
                     <p class="card-text mb-1" style="font-size: 1.5rem"><b>Rated : </b> <span id="Rate"> </span></p>
                 </div>
 
@@ -162,28 +175,34 @@
 
 
 
-      <div class="container marketing" id="aboutbox">
+    <div class="container marketing" id="aboutbox" >
 
-        <div class="row featurette" >
+        <div class="row featurette">
             <div class="col-md-7 order-md-2 py-5 my-5">
-              <h2 class="featurette-heading">About MyAnimeList.net</h2>
-              <p class="lead">MyAnimeList.net is the world's largest anime and manga database and community created by an anime fan, for anime fans. We provide users with a quick and no-hassle way to catalog their anime and manga collections, as well as a platform to communicate with like minded fans, and keep up to date with important industry news.</p>
+                <h2 class="featurette-heading">About MyAnimeList.jp</h2>
+                <p class="lead">MyAnimeList.net is the world's largest anime and manga database and community created by
+                    an anime fan, for anime fans. We provide users with a quick and no-hassle way to catalog their anime
+                    and manga collections, as well as a platform to communicate with like minded fans, and keep up to
+                    date with important industry news.</p>
             </div>
             <div class="col-md-5 order-md-1 py-5">
-           <img src="image/06.png" width="100%" height="100%">
-      
-            </div>
-          </div>
-    
- 
-      </div>
+                <img src="image/06.png" width="100%" height="100%">
 
-      <div class="pricing-header px-1 py-1 pt-md-5 pb-md-4 mx-auto text-center text-light bg-secondary">
-        <h1 class="display-4" style="font-size: 0.2rem;">copyright@ jittaphon jankham 632110336 </h1>
+            </div>
+        </div>
+
 
     </div>
+<footer>
+    <div class="pricing-header px-1 py-1 pt-md-5 pb-md-4 mx-auto text-center text-light bg-secondary">
+        <h1 class="display-4" style="font-size: 0.2rem;">copyright@ jittaphon jankham 632110336 tel 062951080</span>  </h1>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <a href="https://www.facebook.com/artjittapoun.chankum/" target="_blank"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+          </svg><span style="font-size: 0.7rem;""></a> 
+    </div>
+</footer>
 
-      
+
 
 
 
