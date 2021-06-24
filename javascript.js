@@ -32,6 +32,7 @@ function HidAll(){
 
 
 document.getElementById('2').addEventListener('click', () => {
+    DetailBox.style.display = 'none'
     myFavorite.style.display = 'block'
     myFavorite.style.display = 'none'
     mySearch.style.display = 'none'
@@ -95,6 +96,8 @@ function addMovieMyList(MovieList) {
 }
 
 searchByNameClick.addEventListener('click', () => {
+    DetailBox.style.display = 'none'
+    
     mySearch.style.display = 'block'
     myFavorite.style.display = 'none'
     tab.style.display ='block'
